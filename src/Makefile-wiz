@@ -1,0 +1,124 @@
+#
+# SimCoupe port on GP2X 
+#
+# Copyright (C) 2006 Ludovic Jacomme (ludovic.jacomme@gmail.com)
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+SIM_VERSION=1.0.1
+
+TARGET = wizsim.gpe
+SDL_CONFIG = $(WIZDEV)/bin/sdl-config
+OBJS = gp2x_psp.o \
+cpuwiz.o  \
+Action.o \
+ATA.o \
+Atom.o \
+CDisk.o \
+CDrive.o \
+Clock.o \
+CPU.o \
+CScreen.o \
+CStream.o \
+Debug.o \
+Disassem.o \
+Expr.o \
+Font.o \
+Frame.o \
+GUI.o \
+GUIDlg.o \
+GUIIcons.o \
+HardDisk.o \
+IO.o \
+Main.o \
+Memory.o \
+Mouse.o \
+Options.o \
+Parallel.o \
+PNG.o \
+Profile.o \
+SDIDE.o \
+Util.o \
+YATBus.o \
+SAASound.o \
+unzip.o \
+ioapi.o \
+Display.o \
+Floppy.o \
+IDEDisk.o \
+Input.o \
+MIDI.o \
+Sound.o \
+OSD.o \
+UI.o \
+Video.o \
+simcoupec.o \
+psp_fmgr.o \
+psp_main.o \
+psp_kbd.o  \
+psp_danzeff.o \
+psp_sdl.o \
+psp_font.o \
+psp_menu.o  \
+psp_menu_help.o \
+psp_menu_set.o  \
+psp_menu_kbd.o \
+SAAAmp.o \
+SAAEnv.o \
+SAAFreq.o \
+SAAImpl.o \
+SAANoise.o \
+SAASndC.o \
+LibSAASound.o
+
+# CC=openwiz-gcc
+# CXX=openwiz-g++
+STRIP=openwiz-strip
+CC=open2x-gcc
+CXX=open2x-g++
+CLINK=openwiz-gcc
+
+DEFAULT_CFLAGS = $(shell $(SDL_CONFIG) --cflags)
+
+MORE_CFLAGS = -I. -I$(WIZDEV)/include \
+-DUSE_LOWRES -DUSE_SAASOUND -DUSE_ZLIB \
+-DSIM_VERSION=\"$(SIM_VERSION)\" \
+-DWIZ_MODE
+
+# -DNO_STDIO_REDIRECT  
+
+CFLAGS = $(DEFAULT_CFLAGS) $(MORE_CFLAGS) -O2 -Wall -fsigned-char \
+    -funroll-loops -ffast-math -fomit-frame-pointer -fno-strength-reduce -finline-functions
+CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti 
+
+LIBS += -Wl,-rpath,$(OPENWIZ)/lib -L$(WIZDEV)/lib -lSDL_image -lSDL -lpng -lz -lm -lpthread -lstdc++
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.cpp.o:
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(TARGET): $(OBJS)
+	$(CLINK) $(CFLAGS) $(OBJS) $(LIBS) -o $(TARGET) && $(STRIP) $(TARGET)
+
+install: $(TARGET)
+	cp $< /media/usbdisk/game/wizsim/
+
+clean:
+	rm -f $(OBJS) $(TARGET)
+
+ctags: 
+	ctags *[ch]
