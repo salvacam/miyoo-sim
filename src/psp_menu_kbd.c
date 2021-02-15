@@ -81,7 +81,7 @@
     "LTrigger :",
     "RTrigger :",
 # if defined(MIYOO_MODE)   
-   { "Start    :" },
+    "Start    :",
 # else 
     "JoyFire  :",
 # endif 
