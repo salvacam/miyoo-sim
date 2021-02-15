@@ -80,7 +80,11 @@
     "B        :",
     "LTrigger :",
     "RTrigger :",
+# if defined(MIYOO_MODE)   
+   { "Start    :" },
+# else 
     "JoyFire  :",
+# endif 
     "JoyUp    :",
     "JoyDown  :",
     "JoyLeft  :",

@@ -226,7 +226,11 @@ psp_main_menu_exit(void)
   gp2xCtrlData c;
 
   psp_display_screen_menu();
+  #ifdef MIYOO_MODE
+  psp_sdl_back2_print(180,  70, "press B to confirm !", PSP_MENU_WARNING_COLOR);
+  #else
   psp_sdl_back2_print(180,  70, "press X to confirm !", PSP_MENU_WARNING_COLOR);
+  #endif
   psp_sdl_flip();
 
   psp_kbd_wait_no_button();

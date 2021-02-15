@@ -257,8 +257,13 @@ psp_fmgr_ask_confirm(void)
 
   psp_sdl_back2_print(190,  70, "Delete a file", 
                      PSP_MENU_WARNING_COLOR);
+  #ifdef MIYOO_MODE
+  psp_sdl_back2_print(170,  80, "press B to confirm !", 
+                     PSP_MENU_WARNING_COLOR);
+  #else
   psp_sdl_back2_print(170,  80, "press X to confirm !", 
                      PSP_MENU_WARNING_COLOR);
+  #endif
   psp_sdl_flip();
 
   psp_kbd_wait_no_button();

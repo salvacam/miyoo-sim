@@ -57,10 +57,36 @@ typedef struct gp2xCtrlData SceCtrlData;
 # define PSP_CTRL_VOLDOWN    GP2X_CTRL_VOLDOWN   
 # define PSP_CTRL_MASK       GP2X_CTRL_MASK      
 
-//#if defined(WIZ_MODE) || defined(GP2X_MODE)
+#if defined(MIYOO_MODE)
+
+#define GP2X_UP              (103)
+#define GP2X_DOWN            (108)
+#define GP2X_LEFT            (105)
+#define GP2X_RIGHT           (106)
+
+#define GP2X_A               (57)
+#define GP2X_X               (29)
+#define GP2X_B               (56)
+#define GP2X_Y               (42)
+#define GP2X_L               (15)
+#define GP2X_R               (14)
+#define GP2X_SELECT          (97)   // Select   1
+#define GP2X_START           (1)    // Start   28
+#define GP2X_FIRE            (28)   // Reset   97
+#define GP2X_VOLDOWN         (-7)        
+#define GP2X_VOLUP           (-8)        
+
+#define GP2X_HOLD            (-1)
+#define GP2X_UPLEFT          (-3)
+#define GP2X_UPRIGHT         (-4)
+#define GP2X_DOWNLEFT        (-5)
+#define GP2X_DOWNRIGHT       (-6)
+
+#else
+
+#if defined(WIZ_MODE) || defined(GP2X_MODE)
 
 //gp2x buttons codes
-/*
 #define GP2X_UP              (0)
 #define GP2X_DOWN            (4)
 #define GP2X_LEFT            (2)
@@ -82,65 +108,43 @@ typedef struct gp2xCtrlData SceCtrlData;
 #define GP2X_SELECT          (8)
 #define GP2X_VOLUP           (16)
 #define GP2X_VOLDOWN         (17)
-*/
-#define GP2X_UP              (103)
-#define GP2X_DOWN            (108)
-#define GP2X_LEFT            (105)
-#define GP2X_RIGHT           (106)
 
-#define GP2X_A               (57)
-#define GP2X_X               (29)
-#define GP2X_B               (56)
-#define GP2X_Y               (42)
-#define GP2X_L               (15)
-#define GP2X_R               (14)
-#define GP2X_SELECT          (1)
-#define GP2X_START           (28)
-#define GP2X_VOLUP           (97)
-#define GP2X_VOLDOWN         (-7)        
-#define GP2X_FIRE            (-8)        
+#else
 
-#define GP2X_HOLD            (-1)
-#define GP2X_UPLEFT          (-3)
-#define GP2X_UPRIGHT         (-4)
-#define GP2X_DOWNLEFT        (-5)
-#define GP2X_DOWNRIGHT       (-6)
+//some keys of the keyboard to emulate gp2x
 
-// #else
+#define GP2X_UPLEFT         79 //SDLK_KP7
+#define GP2X_UP             80 //SDLK_KP8
+#define GP2X_UPRIGHT        81 //SDLK_KP9
 
-// //some keys of the keyboard to emulate gp2x
+#define GP2X_LEFT           83 //SDLK_KP4
+#define GP2X_RIGHT          85 //SDLK_KP6
 
-// #define GP2X_UPLEFT         79 //SDLK_KP7
-// #define GP2X_UP             80 //SDLK_KP8
-// #define GP2X_UPRIGHT        81 //SDLK_KP9
+#define GP2X_DOWNLEFT       87 //SDLK_KP1
+#define GP2X_DOWN           88 //SDLK_KP2
+#define GP2X_DOWNRIGHT      89 //SDLK_KP3
 
-// #define GP2X_LEFT           83 //SDLK_KP4
-// #define GP2X_RIGHT          85 //SDLK_KP6
+# if 0
+#define GP2X_A              38 //SDLK_a
+#define GP2X_B              56 //SDLK_b
+#define GP2X_X              53 //SDLK_x
+#define GP2X_Y              29 //SDLK_y
+# else
+#define GP2X_A              38 //SDLK_a
+#define GP2X_B              40 //SDLK_d
+#define GP2X_X              53 //SDLK_x
+#define GP2X_Y              25 //SDLK_w
+# endif
+#define GP2X_L              46 //SDLK_l
+#define GP2X_R              27 //SDLK_r
+#define GP2X_FIRE           65 //SDLK_SPACE
+#define GP2X_START          36 //SDLK_RETURN
+#define GP2X_SELECT         39  //SDLK_s
+#define GP2X_VOLUP         86     //SDLK_KP_PLUS
+#define GP2X_VOLDOWN       82    //SDLK_KP_MINUS
 
-// #define GP2X_DOWNLEFT       87 //SDLK_KP1
-// #define GP2X_DOWN           88 //SDLK_KP2
-// #define GP2X_DOWNRIGHT      89 //SDLK_KP3
-
-// # if 0
-// #define GP2X_A              38 //SDLK_a
-// #define GP2X_B              56 //SDLK_b
-// #define GP2X_X              53 //SDLK_x
-// #define GP2X_Y              29 //SDLK_y
-// # else
-// #define GP2X_A              38 //SDLK_a
-// #define GP2X_B              40 //SDLK_d
-// #define GP2X_X              53 //SDLK_x
-// #define GP2X_Y              25 //SDLK_w
-// # endif
-// #define GP2X_L              46 //SDLK_l
-// #define GP2X_R              27 //SDLK_r
-// #define GP2X_FIRE           65 //SDLK_SPACE
-// #define GP2X_START          36 //SDLK_RETURN
-// #define GP2X_SELECT         39  //SDLK_s
-// #define GP2X_VOLUP         86     //SDLK_KP_PLUS
-// #define GP2X_VOLDOWN       82    //SDLK_KP_MINUS
-
-// #endif
+#endif 
+#endif //MIYOO_MODE
 
 #define GP2X_NOEVENT -1
 

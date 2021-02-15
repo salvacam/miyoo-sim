@@ -1,0 +1,97 @@
+INTRODUCTION
+------------
+
+SimCoupe is one of the best emulator of the SamCoupe
+home computer running on Windows, PocketPC, Unix etc.
+The emulator faithfully imitates the SamCoupe
+model (see http://www.simcoupe.org/)
+
+WizSIM is a port on Wiz of the cvs version 0.90 beta
+4 of SamCoupe.
+
+Many thanks to Nick666 for settings and graphics !
+
+CONTROL
+------------
+
+In the SAM emulator window
+
+Normal mapping :
+
+Wiz        SAM 
+  
+Square     Delete   
+Triangle   Escape 
+Cross      Space
+Circle     Return
+Up         Up
+Down       Down
+Left       Left 
+Right      Right
+LTrigger   Toogle with L keyboard mapping
+RTrigger   Toggle with R keyboard mapping
+
+LTrigger & RTrigger mapping :
+
+Wiz        SAM
+  
+Square     Space   
+Triangle   Escape
+Cross      F9
+Circle     Escape
+Up         Up
+Down       Down
+Left       Left 
+Right      Right
+
+APad Left  7
+APad Rigth 6
+APad Up    9
+APad Down  8
+
+Press L+R+Start exit and return to XMB.
+Press Select    to enter in emulator main menu.
+Press Start     open/close the On-Screen keyboard
+
+In the main menu
+
+Triangle   Go Up directory
+Cross      Valid
+Circle     Valid
+Square     Go Back to the emulator window
+
+L+R+Start  Exit the emulator
+RTrigger   Reset the emulator
+
+The On-Screen Keyboard of "Danzel" and "Jeff Chen"
+
+Use Analog stick to choose one of the 9 squares, and
+use Triangle, Square, Cross and Circle to choose one of
+the 4 letters of the highlighted square.
+
+Use LTrigger and RTrigger to see other 9 squares
+figures.
+
+LOADING SAM DISK FILES
+------------
+
+If you want to load disk image in the virtual drive A
+of your emulator, you have to put your disk file
+(with .zip, .gz, .sbt, .dsk, .sad, .mgt or .td0 file
+extension) on your Wiz memory stick in the 'disk'
+directory.
+
+Then, while inside WizSIM emulator, just press SELECT
+to enter in the emulator main menu, and then using
+the file selector choose one disk file to load in the
+virtual drive of your emulator.
+
+Back to the emulator window, the disk should stard
+automatically (if not, press the F9 sam key to
+reboot).
+
+
+  Enjoy,
+
+            Zx
+

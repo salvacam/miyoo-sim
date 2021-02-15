@@ -19,8 +19,7 @@
 #
 SIM_VERSION=1.0.1
 
-TARGET = wizsim.gpe
-#SDL_CONFIG = $(WIZDEV)/bin/sdl-config
+TARGET = miyoo-sim/miyoo-sim
 
 CHAINPREFIX=/opt/miyoo
 CROSS_COMPILE=$(CHAINPREFIX)/usr/bin/arm-linux-
@@ -96,33 +95,16 @@ SAANoise.o \
 SAASndC.o \
 LibSAASound.o
 
-# CC=openwiz-gcc
-# CXX=openwiz-g++
-# STRIP=openwiz-strip
-# CC=open2x-gcc
-# CXX=open2x-g++
-# CLINK=openwiz-gcc
-
 DEFAULT_CFLAGS = $(shell $(SDL_CONFIG) --cflags)
 
-#MORE_CFLAGS = -I. -I$(WIZDEV)/include \
-MORE_CFLAGS = -I. -I$(SYSROOT)/usr/include -I$(SYSROOT)/usr/lib -I$(SYSROOT)/lib \
--DUSE_LOWRES -DUSE_SAASOUND -DUSE_ZLIB \
--DSIM_VERSION=\"$(SIM_VERSION)\" \
--DWIZ_MODE
-
-# -DNO_STDIO_REDIRECT  
+MORE_CFLAGS = -I. -I$(SYSROOT)/usr/include -I$(SYSROOT)/usr/lib -I$(SYSROOT)/lib
+MORE_CFLAGS += -DUSE_LOWRES -DUSE_SAASOUND -DUSE_ZLIB
+MORE_CFLAGS += -DSIM_VERSION=\"$(SIM_VERSION)\"
+MORE_CFLAGS += -DMIYOO_MODE
 
 CFLAGS = $(DEFAULT_CFLAGS) $(MORE_CFLAGS) -O2 -Wall -fsigned-char \
     -funroll-loops -ffast-math -fomit-frame-pointer -fno-strength-reduce -finline-functions
 CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti 
-
-#LIBS += -Wl,-rpath,$(OPENWIZ)/lib -L$(WIZDEV)/lib -lSDL_image 
-#-lSDL -lpng -lz -lm -lpthread -lstdc++
-
-
-#CHAINPREFIX=/opt/miyoo
-#CROSS_COMPILE=$(CHAINPREFIX)/usr/bin/arm-linux-
 
 LIBS += -Wl,-rpath,$(SYSROOT)/lib
 LIBS += -L$(SYSROOT)/lib
@@ -137,14 +119,6 @@ LIBS += -lSDL -lpng -lz -lm -lpthread -lstdc++
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(TARGET) && $(STRIP) $(TARGET)
-#	$(CLINK) $(CFLAGS) $(OBJS) $(LIBS) -o $(TARGET) && $(STRIP) $(TARGET)
-
-
-#install: $(TARGET)
-#	cp $< /media/usbdisk/game/wizsim/
 
 clean:
 	rm -f $(OBJS) $(TARGET)
-
-ctags: 
-	ctags *[ch]
